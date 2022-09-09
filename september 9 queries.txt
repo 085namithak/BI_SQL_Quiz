@@ -1,0 +1,9 @@
+1. write a query to display top salaried employees location wise- city
+
+select first_name, last_name, city, salary from emp_details_view where(salary, city) 
+in (select max(salary), city from emp_details_view group by city) order by salary DESC;
+
+2. write a query to display employees based on bonous department wise?
+
+select department_id, first_name, last_name, salary, commission_pct, salary+nvl(commission_pct,0) as bonous 
+from employees where(department_id) in (select department_id from employees group by department_id) order by department_id DESC;
